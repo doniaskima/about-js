@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button">Get text File</button>
+    <br />
+    <br />
+    <div id="text"></div>
+    <script>
+        //create event Listner
+        document.getElementById("button").addEventListener("click", loadText);
+
+        function loadText() {
+            // create XHR Object
+            const xhr = new XMLHttpRequest();
+            //Open -type , Url /file , async
+            xhr.open("GET", "simple.txt", true);
+            xhr.onprogress = function() {
+                console.log("READYSTATE:", xhr.readyState);
+            };
+            xhr.onload = function() {
+                console.log("READYSTATE:", xhr.readyState);
+                if (xhr.status === 200) {
+                    console.log(this.responseText);
+                    document.getElementById("text").innerHTML = this.responseText;
+                } else if (this.status === 404) {
+                    document.getElementById("text").innerHTML = "not found";
+                }
+            };
+            xhr.onerror = function() {
+                console.log("request error...");
+            };
+            console.log("READYSTATE:", xhr.readyState);
+            // xhr.onreadystatechange = function() {
+            //     console.log("READYSTATE:", xhr.readyState);
+            //     if (this.readyState == 4 && this.status == 200) {
+            //         console.log(this.responseText);
+            //     }
+            // };
+
+            //readState values
+            // 0 : request not initialized
+            //1:servvver connection established
+            //2 :request received
+            //3 :processing request
+            //4 :request finished and response is ready
+
+            // sends request
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>

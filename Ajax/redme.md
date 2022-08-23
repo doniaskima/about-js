@@ -13,3 +13,11 @@ XmlHttpRequest (XHR) object ?
 4-can be used with other protocls than HTTP 
 5-can be used ith other protocls than HTTP 
 6-Can work with data other than XML (Json plain text)
+
+Libraries and Other Methods 
+1-Jquery
+2-Axios 
+3-superagent
+4-Fetch API for
+5-PRototype
+6-Node HTTP
